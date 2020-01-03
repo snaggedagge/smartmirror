@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {WeatherIconService} from "./weather/service/weather-icon.service";
-import {WeatherService} from "./weather/service/weather.service";
-import {WeatherReport} from "./weather/model/weather-report";
+import {Component, ElementRef, NgZone, OnInit, Renderer2} from '@angular/core';
+import {WeatherIconService} from "./service/weather-icon.service";
+import {WeatherService} from "./service/weather.service";
+import {WeatherReport} from "./model/weather-report";
 
 import {WebsocketService} from "./websocket/websocket.service";
+import {QuoteService} from "./service/quote.service";
 
 @Component({
   selector: 'app-root',
@@ -11,26 +12,33 @@ import {WebsocketService} from "./websocket/websocket.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  message = 'smartmirror-ui';
+  options = { hour: '2-digit', minute: '2-digit'};
 
-  weatherReport : WeatherReport;
+  time = new Date().toLocaleString("sv-FI", this.options);
+  quote = "I am king";
+  author = "Dag K";
 
-  constructor(public weatherIconService: WeatherIconService,
-              private weatherService: WeatherService,
-              private websocketService: WebsocketService) {
+  constructor(private zone: NgZone,
+              private quoteService: QuoteService) {
+    this.zone.runOutsideAngular(() => {
+      setInterval(() => {
+        this.time = new Date().toLocaleString("sv-FI", this.options);
+      }, 500);
+      setInterval(() => {
+        this.updateDailyQuote();
+      }, 1000*60*60); // Once every hour for now
+    });
   }
 
   ngOnInit(): void {
-    this.updateData();
-
-    this.websocketService.onMessage('/topic/update').subscribe(message => {
-      this.updateData();
-    });
+    this.updateDailyQuote();
   }
 
-  updateData() {
-    this.weatherService.getWeather().subscribe(data => {
-      this.weatherReport = data;
-    });
+  updateDailyQuote() {
+    this.quoteService.getQuote().subscribe(quote => {
+      this.quote = quote.quote;
+      this.author = quote.author;
+    })
   }
+
 }

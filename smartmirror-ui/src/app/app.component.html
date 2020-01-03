@@ -1,19 +1,23 @@
-
-
 <div class="container-fluid">
-  {{message}}
-  <div class="row justify-content-end" *ngIf="weatherReport != null" >
-    <div class="col-md-auto" *ngFor="let weather of weatherReport.weatherList, let i = index">
-      <h3 class="day">{{weather.day}}</h3>
-      <div class="weatherIcon" >
-        <div class="{{weatherIconService.getCssClass(weather.iconName)}}">
-          <div class="inner"></div>
-        </div>
-      </div>
-      <p class="conditions">{{weather.weather}}</p>
-
-      <p *ngIf="i == 0" class="temp">{{weather.temp.toFixed(1)}}</p>
-      <p *ngIf="i > 0" class="tempRange"><span class="high">{{weather.maxTemp.toFixed(1)}}</span> | <span class="low">{{weather.minTemp.toFixed(1)}}</span></p>
+  <div class="row justify-content-start" style="float: left">
+    <div class="p-2 bd-highlight" style="float: left">
+      <p id="time" style="font-family: 'urban_jungle'; font-size: 54px; color: #6D8CA0">{{time}}</p>
     </div>
   </div>
+
+  <app-weather-prognosis></app-weather-prognosis>
+
+
+
+
+</div>
+
+
+<div class="container-fluid" style="position:absolute; bottom:0;">
+  <ngx-arc-text style="font-family: 'all'; font-size: 28px; color: #6D8CA0;"
+    [text]="quote"
+    arc="1500"
+    direction="1">
+  </ngx-arc-text>
+  <p class="row justify-content-center" style="font-family: 'cassandra'; font-size: 18px; color: #6D8CA0;">{{author}}</p>
 </div>

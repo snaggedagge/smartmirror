@@ -29,7 +29,8 @@
             ],
             "styles": [
               "src/assets/bootstrap-4.4.1-dist/css/bootstrap.min.css",
-              "src/styles.sass"
+              "src/styles.sass",
+              "src/assets/fonts/webfontkit/stylesheet.css"
             ],
             "scripts": [
             ]
@@ -95,7 +96,6 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
             ],
             "scripts": []
           }
