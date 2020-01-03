@@ -18,8 +18,8 @@
 
 
      // TODO: move out of here
-    const { remote, BrowserWindow } = require('electron')
-    const currentWindow = remote.getCurrentWindow()
+    const { remote, BrowserWindow } = require('electron');
+    const currentWindow = remote.getCurrentWindow();
 
     Mousetrap.bind('f12', function() {
       currentWindow.webContents.openDevTools();

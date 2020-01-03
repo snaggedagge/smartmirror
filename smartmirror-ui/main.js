@@ -1,32 +1,9 @@
-
-/*
- var express = require('express'),
-  server = express(),
-  port = process.env.PORT || 3002,
-  bodyParser = require('body-parser');
-
-server.use(bodyParser.urlencoded({ extended: true }));
-server.use(bodyParser.json());
-
-var routes = require('./test'); //importing route
-routes(server);
-
-server.listen(port);
-
-console.log('todo list RESTful API server started on: ' + port);
-
-
- */
-
 const { app, BrowserWindow } = require('electron')
 
 let win;
 
 function createWindow () {
   // Create the browser window.
-
-
-
   win = new BrowserWindow({
     width: 1280,
     height: 1024,

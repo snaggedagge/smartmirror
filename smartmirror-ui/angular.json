@@ -29,12 +29,9 @@
             ],
             "styles": [
               "src/assets/bootstrap-4.4.1-dist/css/bootstrap.min.css",
-              "src/assets/font-awesome-4.7.0/css/font-awesome.min.css",
               "src/styles.sass"
             ],
             "scripts": [
-              "src/assets/jquery-3.4.1.js",
-              "src/assets/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
