@@ -21,5 +21,5 @@ electron-packager ./ smartmirror-ui-app --platform=win32 --arch=x64 --overwrite
 ## Logs
 By default, it writes logs to the following locations:
 
-* on Linux: ~/.config/{app name}/logs/{process type}.log
-* on macOS: ~/Library/Logs/{app name}/{process type}.log
+* on Linux: ~/.config/smartmirror-ui/logs/{process type}.log
+* on Windows C:\Users\{USER_PROFILE}\AppData\Roaming\smartmirror-ui\logs

@@ -1,28 +1,82 @@
 import {Injectable, OnDestroy} from "@angular/core";
-import {CompatClient, Stomp, StompSubscription} from "@stomp/stompjs";
+import {CompatClient, IFrame, Stomp, StompSubscription} from "@stomp/stompjs";
 import {Observable} from "rxjs/internal/Observable";
 import {environment} from "../../environments/environment";
 import * as SockJS from "sockjs-client";
+import {Subscriber} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebsocketService {
+  subscriptions = new Map<string, Subscriber<any>>();
+  isConnected = false;
+  isConnecting = false;
+  stompClient: CompatClient;
+
   constructor() {
+    this.reconnect(false, 5000);
+  }
+
+  async reconnect(activateSubscriptions, reconnectInterval) {
+    var self = this;
+    let reconInv = setInterval(() => {
+      var socket = new SockJS(environment.apiBase + '/websocket');
+      if(!self.isConnecting) {
+        self.isConnecting = true;
+        self.stompClient = Stomp.over(socket);
+        console.log("Trying to connect to websocket!");
+        self.stompClient.connect({}, (frame) => {
+            clearInterval(reconInv);
+            self.isConnected = true;
+            self.isConnecting = false;
+
+            if (activateSubscriptions) {
+              self.subscriptions.forEach((subscriber, topic)=> {
+                self.subscribe(subscriber, topic);
+              })
+            }
+
+          }, () => {
+            self.isConnected = false;
+            self.isConnecting = false;
+            self.reconnect(true, 30000);
+          },
+          () => {
+            self.isConnected = false;
+            self.isConnecting = false;
+            self.reconnect(true, 30000);
+          });
+      }
+    }, reconnectInterval);
+  }
+
+  private delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
   onMessage(topic: string): Observable<any> {
+    var self=this;
     return new Observable<any>(observer => {
-      var socket = new SockJS(environment.apiBase + '/smartmirror');
-      const stompClient = Stomp.over(socket);
-      stompClient.connect({}, function (frame) {
-        //console.log('Connected: ' + frame);
-        const subscription: StompSubscription = stompClient.subscribe(topic, function (message) {
-          observer.next(message.body);
-        });
-        return () => stompClient.unsubscribe(subscription.id);
-      });
+      self.subscribe(observer, topic);
     });
+  }
+
+  private subscribe(observer: Subscriber<any>, topic: string) {
+    var self=this;
+    (async () => {
+      while(!self.isConnected) {
+        await self.delay(10000);
+      }
+      self.subscriptions.set(topic, observer);
+      const subscription: StompSubscription = self.stompClient.subscribe(topic, function (message) {
+        observer.next(message.body);
+      });
+      return () => {
+        console.log("Unsubscribing");
+        self.stompClient.unsubscribe(subscription.id);
+      };
+    })();
   }
 
 }
