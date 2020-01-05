@@ -25,9 +25,11 @@ export class WebsocketService {
       if(!self.isConnecting) {
         self.isConnecting = true;
         self.stompClient = Stomp.over(socket);
+        self.stompClient.debug = (msg => {});
         console.log("Trying to connect to websocket!");
         self.stompClient.connect({}, (frame) => {
             clearInterval(reconInv);
+            console.log("Is connected to websocket!");
             self.isConnected = true;
             self.isConnecting = false;
 
@@ -69,6 +71,8 @@ export class WebsocketService {
         await self.delay(10000);
       }
       self.subscriptions.set(topic, observer);
+
+      console.log("Subscibing to topic " + topic);
       const subscription: StompSubscription = self.stompClient.subscribe(topic, function (message) {
         observer.next(message.body);
       });
