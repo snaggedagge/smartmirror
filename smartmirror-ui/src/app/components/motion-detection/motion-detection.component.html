@@ -1,0 +1,13 @@
+<div [hidden]="!motionDetectionDebug"><video #video id="video" width="640" height="480" autoplay></video></div>
+<canvas [hidden]="!motionDetectionDebug" #canvas id="canvas" width="640" height="480"></canvas>
+
+<div class="container slider" [hidden]="currentIndex === 2" style="float: start; width: 100%; position:absolute; z-index: 1000;">
+  <div [@slideAnimation]="currentIndex">
+    <ng-template ngFor [ngForOf]="slides" let-slide let-i="index">
+      <img  style="position:absolute; z-index: 1000; width: 1280px"
+           *ngIf="i === currentIndex"
+           [src]="slide.image">
+    </ng-template>
+
+  </div>
+</div>

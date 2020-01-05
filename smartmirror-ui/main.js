@@ -19,7 +19,6 @@ function createWindow () {
   // Open the DevTools.
   win.webContents.openDevTools();
 
-
   // Event when the window is closed.
   win.on('closed', function () {
     win = null

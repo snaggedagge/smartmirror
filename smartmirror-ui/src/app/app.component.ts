@@ -1,10 +1,8 @@
-import {Component, ElementRef, NgZone, OnInit, Renderer2} from '@angular/core';
-import {WeatherIconService} from "./service/weather-icon.service";
-import {WeatherService} from "./service/weather.service";
-import {WeatherReport} from "./model/weather-report";
+import {Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild} from '@angular/core';
 
-import {WebsocketService} from "./websocket/websocket.service";
 import {QuoteService} from "./service/quote.service";
+import {MotionService} from "./service/motion.service";
+
 
 @Component({
   selector: 'app-root',
@@ -17,6 +15,8 @@ export class AppComponent implements OnInit{
   time = new Date().toLocaleString("sv-FI", this.options);
   quote = "I am king";
   author = "Dag K";
+
+
 
   constructor(private zone: NgZone,
               private quoteService: QuoteService) {
@@ -34,11 +34,12 @@ export class AppComponent implements OnInit{
     this.updateDailyQuote();
   }
 
+
+
   updateDailyQuote() {
     this.quoteService.getQuote().subscribe(quote => {
       this.quote = quote.quote;
       this.author = quote.author;
     })
   }
-
 }

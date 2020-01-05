@@ -4,6 +4,8 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/smartmirror-ui/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/smartmirror-ui/smartmirror-ui-app-linux-armv7l" />
+      <excludeFolder url="file://$MODULE_DIR$/smartmirror-ui/smartmirror-ui-app-win32-x64" />
       <excludeFolder url="file://$MODULE_DIR$/smartmirror-ui/tmp" />
     </content>
     <orderEntry type="inheritedJdk" />

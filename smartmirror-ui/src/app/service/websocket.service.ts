@@ -13,11 +13,11 @@ export class WebsocketService {
 
   onMessage(topic: string): Observable<any> {
     return new Observable<any>(observer => {
-      var socket = new SockJS(environment.apiBase + '/update');
+      var socket = new SockJS(environment.apiBase + '/smartmirror');
       const stompClient = Stomp.over(socket);
       stompClient.connect({}, function (frame) {
         //console.log('Connected: ' + frame);
-        const subscription: StompSubscription = stompClient.subscribe('/topic/update', function (message) {
+        const subscription: StompSubscription = stompClient.subscribe(topic, function (message) {
           observer.next(message.body);
         });
         return () => stompClient.unsubscribe(subscription.id);

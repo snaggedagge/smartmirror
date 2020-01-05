@@ -15,7 +15,7 @@ sudo npm install -g --arch=armv7l electron@6.1.7 --unsafe-perm=true --allow-root
 ## Install and run electron-packager
 npm install electron-packager -g
 
-electron-packager ./ smartmirror-ui-app --platform=linux --arch=armv7l
-electron-packager ./ smartmirror-ui-app --platform=win32 --arch=x64
+electron-packager ./ smartmirror-ui-app --platform=linux --arch=armv7l --overwrite
+electron-packager ./ smartmirror-ui-app --platform=win32 --arch=x64 --overwrite
 
 

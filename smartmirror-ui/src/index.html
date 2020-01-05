@@ -5,31 +5,6 @@
   <title>SmartmirrorUi</title>
   <base href="/">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script>
-    var global = global || window;
-    var Buffer = Buffer || [];
-    var process = process || {
-      env: { DEBUG: undefined },
-      version: []
-    };
-
-    var Mousetrap = require('mousetrap');
-    Mousetrap.bind('4', function() { console.log('4'); });
-
-
-     // TODO: move out of here
-    const { remote, BrowserWindow } = require('electron');
-    const currentWindow = remote.getCurrentWindow();
-
-    Mousetrap.bind('f12', function() {
-      currentWindow.webContents.openDevTools();
-    });
-
-    Mousetrap.bind('esc', function() {
-      currentWindow.close();
-    });
-
-  </script>
 </head>
 <body>
   <app-root></app-root>

@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  motionDetectionDebug: false,
   apiBase: 'http://localhost:8080'
 };
 
