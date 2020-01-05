@@ -6,12 +6,15 @@ var process = process || {
 };
 const log = require('electron-log');
 log.info("Starting application");
-console._log_old = console.log;
 console.log = function(msg) {
   log.info(msg);
 };
-
-
+console.warn = function(msg) {
+  log.warn(msg);
+};
+console.error = function(msg) {
+  log.error(msg);
+};
 
 
 const { remote, BrowserWindow } = require('electron');

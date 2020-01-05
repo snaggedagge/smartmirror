@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo systemctl stop smartmirror.service
+
 sudo rm -r /var/smartmirror/smartmirror-ui/
 sudo cp -R /home/pi/Programmering/smartmirror-ui-app-linux-armv7l /var/smartmirror/smartmirror-ui/
 sudo chmod +x /var/smartmirror/smartmirror-ui/smartmirror-ui-app
@@ -15,3 +17,5 @@ sudo rm /var/smartmirror/Alexa/AlexaApp
 sudo rm -r /var/smartmirror/Alexa/resources
 sudo cp -R /home/pi/Programmering/Alexa/dev/third-party/snowboy/resources/ /var/smartmirror/Alexa/resources
 sudo cp /home/pi/Programmering/Alexa/dev/build/SampleApp/src/SampleApp /var/smartmirror/Alexa/AlexaApp
+
+sudo systemctl start smartmirror.service
