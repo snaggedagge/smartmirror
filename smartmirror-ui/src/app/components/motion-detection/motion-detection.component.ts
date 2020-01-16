@@ -95,9 +95,12 @@ export class MotionDetectionComponent implements OnInit {
 
   ngOnInit(): void {
     var self = this;
+    console.log("Loading model");
     this.preloadImages();
+    console.log("Loading model");
     handTrack.load(this.modelParams).then(lmodel => {
       model = lmodel;
+      console.log("Starting Video");
       handTrack.startVideo(this.video.nativeElement).then(function (status) {
         if (status) {
           setInterval(() => {

@@ -40,6 +40,8 @@ export class AppComponent implements OnInit{
     this.quoteService.getQuote().subscribe(quote => {
       this.quote = quote.quote;
       this.author = quote.author;
+      // 89 is kinda good, 80 limit?
+      console.log('Length ' + quote.quote.length);
     })
   }
 }

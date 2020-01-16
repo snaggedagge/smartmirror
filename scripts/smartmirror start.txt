@@ -1,9 +1,10 @@
 #!/bin/bash
 export DISPLAY=:0.0
+export LOG_DIRECTORY=/var/smartmirror/logs/
 
 /var/smartmirror/Alexa/AlexaApp /var/smartmirror/Alexa/AlexaClientSDKConfig.json /var/smartmirror/Alexa/resources DEBUG9
 
 java -jar /var/smartmirror/smartmirror-javafx-1.0.jar &
 
-sleep 60
+sleep 20
 /var/smartmirror/smartmirror-ui/smartmirror-ui-app

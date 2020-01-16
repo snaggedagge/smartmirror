@@ -1,0 +1,1 @@
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"C:/Programmering/smartmirror/motiondetection-docker","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}},"virtualbox":{"/vagrant_data":{"guestpath":"/vagrant_data","hostpath":"C:/Programmering/smartmirror/motiondetection-docker","disabled":false,"__vagrantfile":true}}}
