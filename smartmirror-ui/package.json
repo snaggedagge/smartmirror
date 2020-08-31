@@ -11,7 +11,11 @@
     "e2e": "ng e2e",
     "electron": "electron .",
     "start:electron": "ng build --base-href ./ && electron .",
-    "distribute:electron": "npm install && ng build --base-href ./ && electron-packager ./ smartmirror-ui-app --platform=linux --arch=armv7l --overwrite && electron-packager ./ smartmirror-ui-app --platform=win32 --arch=x64 --overwrite"
+    "distribute:electron": "npm install && ng build --base-href ./ && electron-packager ./ smartmirror-ui-app --platform=linux --arch=armv7l --overwrite && electron-packager ./ smartmirror-ui-app --platform=win32 --arch=x64 --overwrite",
+    "distribute:electron-linux": "ng build --base-href ./ && electron-packager ./ smartmirror-ui-app --platform=linux --arch=armv7l --overwrite && rmdir \"smartmirror-ui-app-linux-armv7l/resources/app/src\" /s /q && rmdir \"smartmirror-ui-app-linux-armv7l/resources/app/node_modules\" /s /q",
+    "distribute:electron-win64": "ng build --base-href ./ && electron-packager ./ smartmirror-ui-app --platform=win32 --arch=x64 --overwrite && rmdir \"smartmirror-ui-app-win32-x64/resources/app/src\" /s /q && rmdir \"smartmirror-ui-app-win32-x64/resources/app/node_modules\" /s /q",
+    "transferBuildToPi": "scp C:\\Programmering\\smartmirror\\smartmirror-ui\\smartmirror-ui-app-linux-armv7l\\resources\\app\\dist\\* pi@192.168.1.2:/home/pi/Programmering/smartmirror-ui-app-linux-armv7l/resources/app/dist",
+    "buildAndDeploy": "npm run distribute:electron-linux && npm run transferBuildToPi"
   },
   "private": true,
   "dependencies": {

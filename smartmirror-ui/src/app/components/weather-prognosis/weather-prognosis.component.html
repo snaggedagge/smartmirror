@@ -1,14 +1,21 @@
-<div class="row justify-content-end" *ngIf="weatherReport != null" style="float: right">
-  <div class="col-md-auto" *ngFor="let weather of weatherReport.weatherList, let i = index">
-    <h3 class="day">{{weather.day}}</h3>
-    <div class="weatherIcon" >
+<div class="row justify-content-end" *ngIf="weatherReport != null" style="float: right;">
+  <div class="col-xl-auto" *ngFor="let weather of weatherReport.weatherList, let i = index" style="padding-left: 40px;">
+    <h3 class="day">{{weather.time | date:'EEEE'}}</h3>
+    <ng-container *ngIf="weatherIconService.getCssClass(weather.iconName).includes('aws')">
       <div class="{{weatherIconService.getCssClass(weather.iconName)}}">
-        <div class="inner"></div>
       </div>
-    </div>
-    <p class="conditions">{{weather.weather}}</p>
+    </ng-container>
+    <ng-container *ngIf="!weatherIconService.getCssClass(weather.iconName).includes('aws')">
+      <div class="weatherIcon" >
+        <div class="{{weatherIconService.getCssClass(weather.iconName)}}">
+          <div class="inner"></div>
+        </div>
+      </div>
+    </ng-container>
+
+
 
     <p *ngIf="i == 0" class="temp">{{weather.temp.toFixed(1)}}</p>
-    <p *ngIf="i > 0" class="tempRange"><span class="high">{{weather.maxTemp.toFixed(1)}}</span> | <span class="low">{{weather.minTemp.toFixed(1)}}</span></p>
+    <p *ngIf="i > 0" class="tempRange"><span class="high">{{weather.maxTemp.toFixed(1)}}</span> / <span class="low">{{weather.minTemp.toFixed(1)}}</span></p>
   </div>
 </div>

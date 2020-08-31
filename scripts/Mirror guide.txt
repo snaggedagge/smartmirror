@@ -1,0 +1,84 @@
+
+################## 1 Update
+sudo apt-get update && sudo apt-get upgrade
+
+
+################## 2 Turn off screen saver
+
+export DISPLAY=:0
+xset -dpms
+xset s noblank
+xset s off
+xdg-screensaver status
+
+################## 3 Install Node
+
+# Get OS processor
+uname -m
+
+https://nodejs.org/en/download/
+
+tar -xf node-v12.16.1-linux-armv7l.tar.xz
+
+cd node-v12.16.1-linux-armv7l/
+sudo cp -R * /usr/local/
+
+node -v
+npm -v
+
+################## 4 Install Electron & electron-packager
+
+## To install electron, you might have to specify the arch of the operating system
+
+npm install --arch=armv7l electron
+sudo npm install -g --arch=armv7l electron@6.1.7 --unsafe-perm=true --allow-root
+
+## Install and run electron-packager
+sudo npm install electron-packager -g
+
+################## 5 Make sure everything is in the /var/smartmirror
+
+## Should make a zip or something for this when i have a stable version.....
+
+################## 6 Install service
+
+sudo nano /etc/systemd/system/smartmirror.service
+
+## Paste this conf:
+[Unit]
+Description=Smartmirror
+After=syslog.target
+
+[Service]
+User=pi
+WorkingDirectory=/var/smartmirror
+ExecStart=/var/smartmirror/run.sh
+
+
+[Install]
+WantedBy=multi-user.target
+
+## To enable autostart: 
+sudo systemctl enable smartmirror.service
+
+
+################## 7 Install motion detection software
+
+sudo apt install autoconf automake build-essential pkgconf libtool git libzip-dev libjpeg-dev gettext libmicrohttpd-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libavdevice-dev default-libmysqlclient-dev libpq-dev libsqlite3-dev libwebp-dev
+
+sudo wget https://github.com/Motion-Project/motion/releases/download/release-4.2.2/pi_buster_motion_4.2.2-1_armhf.deb
+sudo dpkg -i pi_buster_motion_4.2.2-1_armhf.deb
+
+
+# Conf can be found in separate folder
+sudo nano /etc/motion/motion.conf
+
+sudo nano /etc/default/motion
+
+# Configure the following:
+start_motion_daemon=yes
+
+# Start service
+sudo service motion start
+
+################## 8 Sound configuration

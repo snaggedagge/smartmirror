@@ -34,17 +34,4 @@ if(typeof require === "function") {
       log.error(message, optionalParams);
     }
   };
-
-
-  const { remote, BrowserWindow } = require('electron');
-  const currentWindow = remote.getCurrentWindow();
-
-  var Mousetrap = require('mousetrap');
-  Mousetrap.bind('f12', function() {
-    currentWindow.webContents.toggleDevTools();
-  });
-
-  Mousetrap.bind('esc', function() {
-    currentWindow.close();
-  });
 }

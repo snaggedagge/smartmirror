@@ -1,0 +1,12 @@
+[Unit]
+Description=Smartmirror
+After=syslog.target
+
+[Service]
+User=pi
+WorkingDirectory=/var/smartmirror
+ExecStart=/var/smartmirror/run.sh
+
+
+[Install]
+WantedBy=multi-user.target

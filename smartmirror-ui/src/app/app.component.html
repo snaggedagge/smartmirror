@@ -1,19 +1,18 @@
-<div class="container-fluid">
-  <div class="row justify-content-start" style="float: left">
-    <div class="p-2 bd-highlight" style="float: left">
-      <p id="time" style="font-family: 'urban_jungle'; font-size: 54px; color: #6D8CA0">{{time}}</p>
-    </div>
+<div [@routeAnimations]="prepareRoute(outlet)" >
+  <!--<div *ngIf="platform === 'Win32'">
+    <button type="button" class="btn btn-primary" (click)="left()">Left</button>
+    <button type="button" class="btn btn-primary" (click)="right()">Right</button>
+  </div>-->
+  <router-outlet #outlet="outlet"></router-outlet>
+
+  <div *ngIf="platform === 'Win32'">
+    <iframe #iframe frameBorder="0" height="100%" style="z-index: -1; position: absolute; left: 0px; top: 0px;" width="100%"
+    src="assets/weather.html" allowfullscreen="true"></iframe>
   </div>
-
-  <app-weather-prognosis></app-weather-prognosis>
+  <div *ngIf="platform !== 'Win32'">
+    <iframe #iframe frameBorder="0" height="100%" style="z-index: -1; position: absolute; left: 0px; top: 0px;" width="100%"
+    src="assets/alexa.html" allowfullscreen="true"></iframe>
+  </div>
 </div>
 
 
-<div class="container-fluid" style="position:absolute; bottom:0;">
-  <ngx-arc-text style="font-family: 'all'; font-size: 44px; color: #6D8CA0;"
-    [text]="quote"
-    arc="1500"
-    direction="1">
-  </ngx-arc-text>
-  <p class="row justify-content-center" style="font-family: 'cassandra'; font-size: 18px; color: #6D8CA0;">{{author}}</p>
-</div>

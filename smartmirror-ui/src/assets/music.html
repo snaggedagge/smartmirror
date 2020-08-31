@@ -1,0 +1,490 @@
+<!doctype html>
+<html
+    class="wf-amazonemberdisplay-n3-active wf-amazonemberdisplay-n2-active wf-amazonemberdisplay-n1-active wf-amazonemberdisplay-n4-active wf-amazonemberdisplay-n6-active wf-amazonemberdisplay-n5-active wf-amazonemberdisplay-n7-active wf-amazonemberdisplay-n8-active wf-amazonemberdisplay-n9-active wf-amazonemberdisplay-i3-active wf-amazonemberdisplay-i1-active wf-amazonemberdisplay-i2-active wf-amazonemberdisplay-i4-active wf-amazonemberdisplay-i5-active wf-amazonemberdisplay-i6-active wf-amazonemberdisplay-i7-active wf-amazonemberdisplay-i8-active wf-amazonemberdisplay-i9-active wf-bookerly-i1-active wf-bookerly-i4-active wf-bookerly-i5-active wf-bookerly-n1-active wf-bookerly-n2-active wf-bookerly-n5-active wf-active">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Webpack App</title>
+    <style type="text/css">
+        .aplRendererWindow {
+            position: absolute;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            flex-grow: 1;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .aplRendererViewport {
+            display: flex;
+            box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+    </style>
+    <style type="text/css">
+        /*
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Rg.ttf');
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Lt.ttf');
+            font-weight: 100;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Lt.ttf');
+            font-weight: 200;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Lt.ttf');
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Rg.ttf');
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Md.ttf');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Md.ttf');
+            font-weight: 600;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Bd.ttf');
+            font-weight: 700;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Bd.ttf');
+            font-weight: 800;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_He.ttf');
+            font-weight: 900;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-LightItalic.ttf');
+            font-weight: 100;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-LightItalic.ttf');
+            font-weight: 200;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-LightItalic.ttf');
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-RegularItalic.ttf');
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-MediumItalic.ttf');
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-MediumItalic.ttf');
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-BoldItalic.ttf');
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-BoldItalic.ttf');
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'amazon-ember-display';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-BoldItalic.ttf');
+            font-weight: 900;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Bookerly';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Regular.ttf');
+        }
+
+        @font-face {
+            font-family: 'Bookerly';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Regular.ttf');
+            font-weight: 100;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Bookerly';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Regular.ttf');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Bookerly';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Bold.ttf');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Bookerly';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Italic.ttf');
+            font-weight: 100;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Bookerly';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Italic.ttf');
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Bookerly';
+            src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-BoldItalic.ttf');
+            font-weight: 500;
+            font-style: italic;
+        }
+    </style>
+    <style type="text/css">
+        .bg {
+            background-color: #232F3E;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .alexaLogo {
+            background-image: url(4444bbbc2f4dd0a9586f053308ab9a1a.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 50%;
+            height: 10%;
+        }
+
+        .usage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .deviceDescription {
+            font-size: 40px;
+            font-family: sans-serif;
+            color: lightgray;
+            padding-top: 2vh;
+            text-align: center;
+        }
+
+        .howToTalk {
+            font-size: 40px;
+            font-weight: bold;
+            font-family: sans-serif;
+            color: lightgray;
+            padding-top: 2vh;
+            text-align: center;
+        }
+    </style>
+    <style type="text/css">
+        #voiceChromeScrim {
+            position: absolute;
+            height: 144px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: visibility 0.5s, opacity 0.5s ease-in-out;
+            justify-content: flex-end;
+            pointer-events: none;
+        }
+
+        #voiceChromeState {
+            width: 98%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-end;
+            font-size: 20px;
+            font-family: sans-serif;
+            color: lightgray;
+            padding-bottom: 1vh;
+        }
+    </style>
+    <style type="text/css">
+        #captionsScrim {
+            position: fixed;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+            pointer-events: none;
+        }
+
+        #captionsView {
+            position: fixed;
+            bottom: 0;
+            left: 5%;
+            width: 90%;
+            font-size: 4vmin;
+            font-family: sans-serif;
+            color: white;
+            text-align: left;
+            padding-bottom: 2vh;
+            margin: 0 auto;
+        }
+    </style>
+    <style type="text/css">
+        :root {
+            --display-color: rgb(0, 0, 0);
+        }
+
+        :focus {
+            outline: none;
+        }
+
+        body,
+        html {
+            overflow: hidden;
+            background-color: black
+        }
+
+        * {
+            user-select: none;
+        }
+
+        #displayContainer {
+            position: absolute;
+            padding: 0;
+            margin: 0;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+            transform-origin: 0 0;
+
+            display: flex;
+
+            flex-direction: column;
+            justify-content: flex-end;
+            background-color: var(--display-color);
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript" src="main.bundle.js"></script>
+    <div id="root">
+        <div id="displayContainer" style="height: 1080px; width: 1920px; transform: scale(0.683333); clip-path: none;">
+            <div class="bg">
+                <div class="alexaLogo"></div>
+                <div class="usage">
+                    <div class="deviceDescription">Dag's SmartMirror</div>
+                    <div class="howToTalk">Say "Alexa" to Talk</div>
+                </div>
+            </div>
+            <div class="aplRendererWindow" tabindex="0"
+                style="opacity: 1; visibility: visible; align-items: center; justify-content: center; transition: visibility 1s ease 0s, opacity 250ms linear 0s;">
+                <div id="renderPlayerInfo" class="aplRendererViewport"
+                    style="transition: transform 250ms ease-out 0s; transform: translate(0px, 0px);">
+                    <div tabindex="0"
+                        style="height: 1080px; width: 1920px; display: flex; justify-content: center; align-items: center; background-color: black; background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)); overflow: hidden;">
+                        <div id=":1161" class="apl-o"
+                            style="transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 0px; left: 0px; width: 1920px; height: 1080px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                            <div id=":1162" class="apl-o"
+                                style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 0px; left: 0px; width: 1920px; height: 1080px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                <div id=":1163" class="apl-p"
+                                    style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; top: 0px; left: 0px; width: 1920px; height: 1080px; padding: 0px; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                    <div class="imageHolder"
+                                        style="overflow: hidden; position: relative; isolation: isolate; border-radius: 0px; height: 1080px; width: 1920px; top: 0px; left: 0px;">
+                                        <img class="image"
+                                            src="https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.1.0/images/background/1px.png"
+                                            style="background-clip: padding-box; border-style: solid; border-width: 0px; overflow: hidden; position: absolute; width: 1920px; height: 1920px; top: -420px; left: 0px; max-width: none;">
+                                        <div class="imageOverlay"
+                                            style="position: absolute; background-color: rgba(0, 0, 0, 0); background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.498) 0%, rgba(0, 0, 0, 0) 0%); width: 1920px; height: 1920px;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id=":1164" class="apl-a"
+                                    style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; border-style: solid; overflow: hidden; background-color: rgb(35, 47, 62); border-color: rgba(0, 0, 0, 0); border-radius: 0px; border-width: 0px; top: 0px; left: 0px; width: 1920px; height: 1080px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                </div>
+                            </div>
+                            <div id=":1165" class="apl-a"
+                                style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; border-style: solid; overflow: hidden; background-color: rgba(0, 0, 0, 0); border-color: rgba(0, 0, 0, 0); border-radius: 0px; border-width: 0px; top: 0px; left: 0px; width: 1920px; height: 127px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                <div id=":1166" class="apl-o"
+                                    style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 0px; left: 0px; width: 1920px; height: 127px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                    <div id=":1167" class="apl-o"
+                                        style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 0px; left: 0px; width: 1920px; height: 127px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                        <div id=":1168" class="apl-o"
+                                            style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 0px; left: 0px; width: 1664px; height: 127px; padding: 48px 32px 48px 96px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                            <div id=":1169" class="apl-p"
+                                                style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; top: 48px; left: 96px; width: 227px; height: 31px; padding: 0px; opacity: 1; text-align: left; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                                <p
+                                                    style="display: table-cell; overflow-wrap: break-word; white-space: pre-wrap; user-select: none; hyphens: none; width: 227px; height: 31px; word-break: break-word; color: rgb(240, 240, 240); font-family: amazon-ember-display; font-size: 24px; font-weight: 500; letter-spacing: 0px; line-height: 1.285; opacity: 1; text-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;">
+                                                    <data><data><data>ALEXA AMUSEMENT</data></data></data></p>
+                                            </div>
+                                        </div>
+                                        <div id=":1170" class="apl-o"
+                                            style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 0px; left: 1664px; width: 256px; height: 96px; padding: 40px 96px 0px 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                            <div id=":1171" class="apl-o"
+                                                style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 40px; left: 0px; width: 160px; height: 56px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                                <div id=":1172" class="apl-p"
+                                                    style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; top: 0px; left: 0px; width: 160px; height: 56px; padding: 0px; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                                    <div class="imageHolder"
+                                                        style="overflow: hidden; position: relative; isolation: isolate; border-radius: 0px; height: 56px; width: 56px; top: 0px; left: 104px;">
+                                                        <img class="image"
+                                                            src="https://s3.amazonaws.com/CAPS-SSE/echo_developer/da26/9547a0ce844849c3b8c71159abfdddfb/APP_ICON?versionId=niOKky_tKl40yc5OIfbjuwkrPhnHhvrd&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20200823T173633Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=7200&amp;X-Amz-Credential=AKIAWBV6LQ4QIH3MSWPB%2F20200823%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=536c3dedfe133e60bdd3c378b82ab66b2e43cd3edb52848eed2b6fb07213f16c"
+                                                            style="background-clip: padding-box; border-style: solid; border-width: 0px; overflow: hidden; position: absolute; width: 56px; height: 56px; top: 0px; left: 0px; max-width: none;">
+                                                        <div class="imageOverlay"
+                                                            style="position: absolute; background-color: rgba(0, 0, 0, 0); width: 56px; height: 56px;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id=":1173" class="apl-o"
+                                style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 127px; left: 0px; width: 1920px; height: 953px; padding: 0px 96px 48px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                <div id=":1174" class="apl-o"
+                                    style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 412px; left: 96px; width: 1728px; height: 409px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                    <div id=":1175" class="apl-p"
+                                        style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; top: 0px; left: 0px; width: 409px; height: 409px; padding: 0px; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                        <div class="imageHolder"
+                                            style="overflow: hidden; position: relative; isolation: isolate; border-radius: 12px; height: 409px; width: 409px; top: 0px; left: 0px;">
+                                            <img class="image"
+                                                src="https://d3l071etx9fo2i.cloudfront.net/SingMeSong_Cover1.jpg"
+                                                style="background-clip: padding-box; border-style: solid; border-width: 0px; overflow: hidden; position: absolute; width: 409px; height: 409px; top: 0px; left: 0px; max-width: none;">
+                                            <div class="imageOverlay"
+                                                style="position: absolute; background-color: rgba(0, 0, 0, 0); width: 409px; height: 409px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id=":1176" class="apl-o"
+                                        style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 237px; left: 409px; width: 662px; height: 172px; padding-left: 57.6px; padding-top: 0px; padding-bottom: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                        <div id=":1177" class="apl-p"
+                                            style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; top: 0px; left: 57px; width: 604px; height: 81px; padding: 0px; opacity: 1; text-align: left; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                            <p
+                                                style="display: table-cell; overflow-wrap: break-word; white-space: pre-wrap; user-select: none; hyphens: none; width: 604px; height: 81px; word-break: break-word; color: rgb(218, 218, 218); font-family: amazon-ember-display; font-size: 64px; font-weight: 700; letter-spacing: 0px; line-height: 1.25; opacity: 1; text-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;">
+                                                <data><data><data>Opening With Sorry</data></data></data></p>
+                                        </div>
+                                        <div id=":1178" class="apl-p"
+                                            style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; top: 94px; left: 57px; width: 74px; height: 36px; padding: 0px; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                            <p
+                                                style="display: table-cell; overflow-wrap: break-word; white-space: pre-wrap; user-select: none; hyphens: none; width: 74px; height: 36px; word-break: break-word; color: rgb(240, 240, 240); font-family: amazon-ember-display; font-size: 28px; font-weight: 700; letter-spacing: 0px; line-height: 1.285; opacity: 1; text-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;">
+                                                <data><data><data>Alexa</data></data></data></p>
+                                        </div>
+                                        <div id=":1179" class="apl-p"
+                                            style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; top: 135px; left: 57px; width: 224px; height: 36px; padding: 0px; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                            <p
+                                                style="display: table-cell; overflow-wrap: break-word; white-space: pre-wrap; user-select: none; hyphens: none; width: 224px; height: 36px; word-break: break-word; color: rgb(240, 240, 240); font-family: amazon-ember-display; font-size: 28px; font-weight: 300; letter-spacing: 0px; line-height: 1.285; opacity: 1; text-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;">
+                                                <data><data><data>Alexa Amusement</data></data></data></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id=":1180" class="apl-o"
+                                    style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 865px; left: 96px; width: 1728px; height: 40px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                    <div id=":1181" class="apl-o"
+                                        style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 0px; left: 0px; width: 1728px; height: 8px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                        <div id=":1182" class="apl-o"
+                                            style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 0px; left: 0px; width: 1728px; height: 8px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                            <div id=":1183" class="apl-a"
+                                                style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; border-style: solid; overflow: hidden; background-color: rgb(218, 218, 218); border-color: rgba(0, 0, 0, 0); border-radius: 40px; border-width: 0px; top: 0px; left: 0px; width: 1728px; height: 8px; padding: 0px; opacity: 0.5; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                            </div>
+                                            <div id=":1184" class="apl-a"
+                                                style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; border-style: solid; overflow: hidden; background-color: rgb(218, 218, 218); border-color: rgba(0, 0, 0, 0); border-radius: 40px; border-width: 0px; top: 0px; left: 0px; width: 1728px; height: 8px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id=":1185" class="apl-o"
+                                        style="position: absolute; transform-origin: 0% 0%; box-sizing: border-box; overflow: hidden; top: 41px; left: 0px; width: 1728px; height: 0px; padding: 0px; opacity: 1; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="aplRendererWindow" tabindex="0"
+                style="opacity: 0; visibility: hidden; align-items: center; justify-content: center; transition: visibility 1s ease 0s, opacity 250ms linear 0s;">
+                <div id="tvFullscreen" class="aplRendererViewport"
+                    style="transition: transform 250ms ease-out 250ms; transform: translate(0px, 0px);">
+                    <div></div>
+                </div>
+            </div>
+            <div class="aplRendererWindow" tabindex="0"
+                style="opacity: 0; visibility: hidden; align-items: flex-end; justify-content: center; transition: visibility 1s ease 0s, opacity 250ms linear 0s;">
+                <div id="tvOverlayLandscape" class="aplRendererViewport"
+                    style="transition: transform 750ms ease-out 250ms; transform: translate(0px, 400px);">
+                    <div tabindex="0"
+                        style="height: 400px; width: 1920px; display: flex; justify-content: center; align-items: center; background-color: black; background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)); overflow: hidden;">
+                    </div>
+                </div>
+            </div>
+            <div id="captionsScrim" style="opacity: 1; visibility: visible;">
+                <div id="captionsView"></div>
+            </div>
+            <div id="voiceChromeScrim" style="opacity: 0; visibility: hidden;">
+                <div id="voiceChromeState" style="justify-content: flex-end;">IDLE</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

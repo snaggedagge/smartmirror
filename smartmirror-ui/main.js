@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, globalShortcut  } = require('electron')
 
 let win;
 
@@ -38,6 +38,15 @@ app.on('window-all-closed', function () {
     app.quit()
   }
 });
+app.whenReady().then(() => {
+  globalShortcut.register('Ctrl+Shift+J', () => {
+    win.toggleDevTools();
+  });
+
+  globalShortcut.register('Esc', () => {
+    app.quit()
+  })
+})
 
 app.on('activate', function () {
   // macOS specific close process

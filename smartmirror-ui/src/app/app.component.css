@@ -1,0 +1,33 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+:root {
+    background: #000000 !important;
+}
+
+.bg {
+    display: none !important;
+}
+
+.test {
+    background: #000000 !important;
+    background-color: #000000 !important;
+}
+
+
+::-webkit-scrollbar {
+    display: none;
+    height: 0;
+    width: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    height: 0;
+    width: 0;
+}
+
+::-webkit-scrollbar-track {
+    height: 0;
+    width: 0;
+}

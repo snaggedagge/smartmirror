@@ -8,19 +8,32 @@ import { WeatherPrognosisComponent } from './components/weather-prognosis/weathe
 import {NgxArcTextModule} from "ngx-arc-text";
 import {MotionDetectionComponent} from "./components/motion-detection/motion-detection.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MainPageComponent} from "./views/main-page/main-page.component";
+import {RouterModule} from "@angular/router";
+import {LeftPageComponent} from "./views/left-page/left-page.component";
+import {RightPageComponent} from "./views/right-page/right-page.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherPrognosisComponent,
-    MotionDetectionComponent
+    MotionDetectionComponent,
+    MainPageComponent,
+    LeftPageComponent,
+    RightPageComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     NgbModule,
     HttpClientModule,
-    NgxArcTextModule
+    NgxArcTextModule,
+    RouterModule.forRoot([
+      { path: '', pathMatch: 'full', redirectTo: '/0' },
+      { path: '0', component: MainPageComponent, data: {animation: 'HomePage'} },
+      { path: '-1', component: LeftPageComponent, data: {animation: 'LeftPage'} },
+      { path: '1', component: RightPageComponent, data: {animation: 'RightPage'} },
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
