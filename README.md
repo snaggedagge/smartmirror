@@ -26,7 +26,7 @@ Pictures of the entire physical project can be found on my [facebook](https://ww
 
 
 ### Software result
-![alt text](https://github.com/snaggedagge/java-development/blob/master/images/software.JPG?raw=true)
+![alt text](https://github.com/snaggedagge/smartmirror/blob/master/images/software.JPG?raw=true)
 
 ### Result in reality
-![alt text](https://github.com/snaggedagge/java-development/blob/master/images/reality.jpg?raw=true)
+![alt text](https://github.com/snaggedagge/smartmirror/blob/master/images/reality.jpg?raw=true)
