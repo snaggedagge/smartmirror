@@ -6,7 +6,7 @@ import { Observable, Subscriber } from 'rxjs';
 })
 export class AlexaService {
 
-  private renderers = []
+  private renderers:any = []
 
   public setRenderers(renderers: any[]) {
     this.renderers = renderers;

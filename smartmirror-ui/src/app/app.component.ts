@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   index = 0;
   platform = navigator.platform;
   @ViewChild('iframe', {static: false})
-  iframe: ElementRef;
+  iframe!: ElementRef;
 
   constructor(private zone: NgZone,
               private quoteService: QuoteService,

@@ -12,22 +12,22 @@ export class WebsocketService {
   subscriptions = new Map<string, Subscriber<any>>();
   isConnected = false;
   isConnecting = false;
-  stompClient: CompatClient;
+  stompClient!: CompatClient;
 
   constructor() {
     this.reconnect(false, 5000);
   }
 
-  async reconnect(activateSubscriptions, reconnectInterval) {
+  async reconnect(activateSubscriptions: boolean, reconnectInterval:number) {
     var self = this;
     let reconInv = setInterval(() => {
       var socket = new SockJS(environment.apiBase + '/websocket');
       if(!self.isConnecting) {
         self.isConnecting = true;
         self.stompClient = Stomp.over(socket);
-        self.stompClient.debug = (msg => {});
+        //self.stompClient.debug = (msg => {});
         console.log("Trying to connect to websocket!");
-        self.stompClient.connect({}, (frame) => {
+        self.stompClient.connect({}, (frame:any) => {
             clearInterval(reconInv);
             console.log("Is connected to websocket!");
             self.isConnected = true;
@@ -73,7 +73,7 @@ export class WebsocketService {
       self.subscriptions.set(topic, observer);
 
       console.log("Subscibing to topic " + topic);
-      const subscription: StompSubscription = self.stompClient.subscribe(topic, function (message) {
+      const subscription: StompSubscription = self.stompClient.subscribe(topic, function (message:any) {
         observer.next(message.body);
       });
       return () => {

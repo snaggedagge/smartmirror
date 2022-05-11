@@ -4,7 +4,32 @@
 
 Pictures of the entire physical project can be found on my [facebook](https://www.facebook.com/snaggedagge/media_set?set=a.10156777749778112&type=3)
 
-### DOCUMENTATION IS OLD, QUITE A BIT HAS HAPPENED
+
+### Semi-updated documentation:
+
+Mirror is nowadays running Amazon Alexa with KittAI / Snowboy third party software for Keywor detection, 
+so it is woken up by keyword "Mirror", instead of "Alexa".
+
+* Also Amazon smart screen SDK has been installed, 
+so things you ask alexa for is also displayed natively in an Iframe of the smartmirror-ui app.
+
+Amazon Alexa code is not in VCS, since it basically is the default 
+amazon code I have checked out and tweaked to get callbacks for volume changes, wake up keywords etc.
+
+* I have motion detection installed, so screen powers down after 5 min 
+of inactivity and consumes about 30W of power. 
+Instantly wakes up if someone walks by.
+
+* Hand gestures was tested, and got it working half decently. 
+But RPI could not power the Machine Learning bits, so the requirement of 
+another computer to do it made the feature feel worthless. Maybe new tries in future!
+
+* Weather data
+* Random quote of the day
+* Awesome RGB lights ofc
+* Anything that comes with Alexa, which is a lot
+
+### DOCUMENTATION IS OLD, QUITE A BIT HAS HAPPENED:
 
 ### Features
 

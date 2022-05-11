@@ -10,7 +10,7 @@ import {WebsocketService} from "../../service/websocket.service";
   styleUrls: ['./weather-prognosis.component.scss']
 })
 export class WeatherPrognosisComponent implements OnInit {
-  weatherReport : WeatherReport;
+  weatherReport : any
 
   constructor(public weatherIconService: WeatherIconService,
               private weatherService: WeatherService,

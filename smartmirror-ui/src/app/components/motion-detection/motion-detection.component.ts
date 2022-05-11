@@ -10,7 +10,7 @@ import {animate, group, query, style, transition, trigger} from "@angular/animat
 
 declare var handTrack:  any;
 declare var JSON:  any;
-export let model;
+export let model:any;
 
 @Component({
   selector: 'app-motion-detection',
@@ -63,10 +63,10 @@ export class MotionDetectionComponent implements OnInit {
   motionDetectionDebug = environment.motionDetectionDebug;
 
   @ViewChild("video", {static: false})
-  public video: ElementRef;
+  public video!: ElementRef;
 
   @ViewChild("canvas", {static: false})
-  public canvas: ElementRef;
+  public canvas!: ElementRef;
 
   modelParams = {
     flipHorizontal: true,   // flip e.g for video
@@ -98,10 +98,10 @@ export class MotionDetectionComponent implements OnInit {
     console.log("Loading model");
     this.preloadImages();
     console.log("Loading model");
-    handTrack.load(this.modelParams).then(lmodel => {
+    handTrack.load(this.modelParams).then((lmodel: any) => {
       model = lmodel;
       console.log("Starting Video");
-      handTrack.startVideo(this.video.nativeElement).then(function (status) {
+      handTrack.startVideo(this.video.nativeElement).then(function (status: any) {
         if (status) {
           setInterval(() => {
             self.capture();
@@ -130,7 +130,7 @@ export class MotionDetectionComponent implements OnInit {
   public capture() {
     var self = this;
 
-    model.detect(self.video.nativeElement).then(predictions => {
+    model.detect(self.video.nativeElement).then((predictions: string | any[]) => {
       if(predictions.length > 0) {
         self.motionService.notifyHandMotion(predictions);
       }

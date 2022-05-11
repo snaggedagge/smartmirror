@@ -6,7 +6,7 @@ import { AlexaService } from 'src/app/service/alexa.service';
 
 declare var handTrack:  any;
 declare var JSON:  any;
-export let model;
+export let model:any;
 
 @Component({
   selector: 'app-main-page',
@@ -31,7 +31,7 @@ export let model;
   ]
 })
 export class MainPageComponent implements OnInit, AfterViewInit {
-  options = { hour: '2-digit', minute: '2-digit'};
+  options: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit'};
 
   time = new Date().toLocaleString("sv-FI", this.options);
   date = new Intl.DateTimeFormat('en-FI', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(new Date());

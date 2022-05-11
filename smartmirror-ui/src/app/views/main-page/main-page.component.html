@@ -15,8 +15,8 @@
   <div *ngIf="!displayingBottomToolbar" class="container-fluid" style="position:absolute; bottom:10px;" [@appear]="quoteHidden ? 'hidden' : 'visible'">
     <ngx-arc-text style="font-family: 'all'; font-size: 44px; color: #6a98d4;"
                   [text]="quote"
-                  arc="1500"
-                  direction="1">
+                  [arc]="1500"
+                  [direction]="1">
     </ngx-arc-text>
     <p class="row justify-content-center" style="font-family: 'cassandra'; font-size: 26px; color: #c9dbf2;">-- {{author}}  --</p>
   </div>

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class WeatherIconService {
-  iconArray = {'01d': 'sunny',
+  iconArray: any = {'01d': 'sunny',
   '01n': 'aws-sunny-cloudy', // Moon
     '02d' : 'aws-sunny-cloudy',
     '02n' : 'aws-sunny-cloudy', // Moon behind clouds
@@ -19,7 +19,6 @@ export class WeatherIconService {
      };
 
   constructor() { }
-
   public getCssClass(imageName: string) : string {
     let res = this.iconArray[imageName];
     if (res == null) {

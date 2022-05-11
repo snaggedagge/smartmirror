@@ -1,0 +1,7 @@
+weather
+selfie
+radio
+start
+lights
+volume
+sleep

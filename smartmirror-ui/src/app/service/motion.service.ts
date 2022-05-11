@@ -11,7 +11,7 @@ export class MotionService {
 
   constructor(private http: HttpClient) { }
 
-  public notifyHandMotion(motion) {
+  public notifyHandMotion(motion:any) {
     this.http.post(environment.apiBase + "/motion/hand", motion).subscribe();
   }
 }
