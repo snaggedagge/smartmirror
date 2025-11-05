@@ -8,6 +8,7 @@ import dkarlsso.commons.multimedia.alarm.impl.DayOfWeek;
 import dkarlsso.commons.multimedia.alarm.impl.WeekdayAlarm;
 import dkarlsso.commons.multimedia.settings.SoundController;
 import dkarlsso.smartmirror.backend.threads.AutostartedRunnable;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
@@ -15,10 +16,9 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Slf4j
 public class RunnableAlarmClock implements AutostartedRunnable {
 
-    private final Logger LOG = LogManager.getLogger(RunnableAlarmClock.class);
 
     private final List<Alarm> alarms = new ArrayList<>();
 
@@ -53,29 +53,29 @@ public class RunnableAlarmClock implements AutostartedRunnable {
 
     @Override
     public void run() {
-        LOG.warn("Starting alarm thread");
+        log.warn("Starting alarm thread");
         boolean isRunning = true;
 
         while (isRunning) {
             try {
-                LOG.info("Checking for active alarms. Alarms in list: " + alarms.size());
+                log.info("Checking for active alarms. Alarms in list: " + alarms.size());
 
                 for(final Alarm alarm : alarms) {
                     if(alarm.shouldAlarmBeActive()) {
-                        LOG.info("Starting alarm");
+                        log.info("Starting alarm");
                         soundController.setVolume(alarm.getVolumeInPercentage());
                         radioPlayer.play();
                         hasActiveAlarm = true;
                     }
                     else if (hasActiveAlarm) {
-                        LOG.info("Stopping alarm");
+                        log.info("Stopping alarm");
                         radioPlayer.stop();
                         hasActiveAlarm = false;
                     }
                 }
                 Thread.sleep(1000 * 60);
             } catch (final CommonsException e) {
-                LOG.error("Error in alarm thread", e);
+                log.error("Error in alarm thread", e);
             } catch (final InterruptedException e) {
                 isRunning = false;
             }

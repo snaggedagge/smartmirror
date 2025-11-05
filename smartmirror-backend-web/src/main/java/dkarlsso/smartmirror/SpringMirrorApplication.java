@@ -1,6 +1,7 @@
 package dkarlsso.smartmirror;
 
-import com.pi4j.io.gpio.GpioFactory;
+import com.pi4j.Pi4J;
+
 import dkarlsso.commons.multimedia.MediaPlayer;
 import dkarlsso.commons.multimedia.radio.RadioPlayer;
 import dkarlsso.commons.multimedia.settings.SoundController;
@@ -33,7 +34,8 @@ public class SpringMirrorApplication{
     public static void main(String[] args) {
         if (OSHelper.isRaspberryPi()) {
             // Not sure if needed anymore?
-            GpioFactory.getInstance();
+            //GpioFactory.getInstance();
+            Pi4J.newAutoContext();
         }
         SpringApplication.run(SpringMirrorApplication.class);
     }
@@ -67,8 +69,10 @@ public class SpringMirrorApplication{
     public RelayInterface lightsRelay() {
         final RelayInterface lightsRelay;
         if (OSHelper.isRaspberryPi()) {
-            lightsRelay = new OptoRelay(GPIOPins.GPIO14_TXDO);
-            lightsRelay.setHigh();
+            //lightsRelay = new OptoRelay(GPIOPins.GPIO14_TXDO);
+            //lightsRelay.setHigh();
+            // TODO: Need to use Pi4j 3+ if this should work
+            lightsRelay = new StubRelay();
         }
         else {
             lightsRelay = new StubRelay();

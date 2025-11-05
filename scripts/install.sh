@@ -3,13 +3,14 @@
 sudo apt -y update
 sudo apt -y upgrade
 sudo apt -y full-upgrade
-sudo apt -y install autoconf automake build-essential pkgconf libtool git libzip-dev libjpeg-dev gettext libmicrohttpd-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libavdevice-dev default-libmysqlclient-dev libpq-dev libsqlite3-dev libwebp-dev
+sudo apt -y install libnss3-dev libgdk-pixbuf-xlib-2.0-dev libgtk-3-dev libxss-dev autoconf automake build-essential pkgconf libtool git libzip-dev libjpeg-dev gettext libmicrohttpd-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libavdevice-dev default-libmysqlclient-dev libpq-dev libsqlite3-dev libwebp-dev
 
 if dpkg -s motion &>/dev/null; then
   echo 'motion is installed'
 else
   wget https://github.com/Motion-Project/motion/releases/download/release-4.7.1/trixie_motion_4.7.1-1_armhf.deb
   sudo dpkg -i trixie_motion_4.7.1-1_armhf.deb
+sudo rm /etc/motion/motion.conf
 sudo tee -a /etc/motion/motion.conf > /dev/null <<EOT
 # Rename this distribution example file to motion.conf
 #
@@ -186,6 +187,7 @@ stream_localhost off
 ; camera_dir /etc/motion/conf.d
 EOT
 
+sudo rm /etc/default/motion
 sudo tee -a /etc/default/motion > /dev/null <<EOT
 start_motion_daemon=yes
 EOT
@@ -213,6 +215,7 @@ sudo mkdir -p /var/smartmirror/
 sudo chmod 777 -R /var/smartmirror/
 mkdir -p /var/smartmirror/logs/
 
+sudo rm /var/smartmirror/run.sh
 sudo tee -a /var/smartmirror/run.sh > /dev/null <<EOT
 #!/bin/bash
 export DISPLAY=:0.0
@@ -226,6 +229,7 @@ sleep 20
 /var/smartmirror/smartmirror-ui/smartmirror-ui-app
 EOT
 
+sudo rm /etc/systemd/system/smartmirror.service
 sudo tee -a /etc/systemd/system/smartmirror.service > /dev/null <<EOT
 [Unit]
 Description=Smartmirror
@@ -244,6 +248,28 @@ EOT
 sudo chmod +x /var/smartmirror/smartmirror-ui/smartmirror-ui-app
 sudo chmod +x /var/smartmirror/smartmirror-backend-web-1.0.jar
 sudo chmod +x /var/smartmirror/run.sh
+
+if ! command -v java >/dev/null 2>&1
+then
+  #mkdir -p ~/jdks
+  #wget https://cdn.azul.com/zulu-embedded/bin/zulu17.60.17-ca-jre17.0.16-c2-linux_aarch32hf.tar.gz -O ~/jdks/zulu11-armhf.tar.gz
+  #tar -xzf ~/jdks/zulu17-armhf.tar.gz -C ~/jdks
+
+  #export JAVA_HOME=~/jdks/zulu17.60.17-ca-jre17.0.16-c2-linux_aarch32hf
+  #export PATH=$JAVA_HOME/bin:$PATH
+  # Cant install 64 bit java, need to upgrade pi4j
+  curl -s "https://get.sdkman.io" | bash
+  source "/home/pi/.sdkman/bin/sdkman-init.sh"
+  sdk install java 21.0.5-librca
+fi
+
+if ! command -v gpio >/dev/null 2>&1
+then
+  cd ~
+  git clone https://github.com/WiringPi/WiringPi --branch master --single-branch wiringpi
+  cd ~/wiringpi
+  sudo ./build
+fi
 
 sudo systemctl enable smartmirror.service
 sudo systemctl start smartmirror.service

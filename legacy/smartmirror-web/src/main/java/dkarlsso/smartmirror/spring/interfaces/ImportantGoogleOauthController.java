@@ -19,8 +19,6 @@ import org.springframework.web.client.HttpClientErrorException;
 @RequestMapping("/login")
 public class ImportantGoogleOauthController {
 
-    private final Logger LOG = LogManager.getLogger(ImportantGoogleOauthController.class);
-
     @Autowired
     private Oauth2UserRepository oauth2UserRepository;
 

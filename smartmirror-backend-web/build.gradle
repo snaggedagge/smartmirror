@@ -1,12 +1,9 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.4'
+    id 'org.springframework.boot' version '3.5.7'
     id 'java'
     id 'java-library'
 }
 
-ext {
-    springBootVersion = '2.6.4'
-}
 repositories {
     mavenLocal()
     mavenCentral()
@@ -16,23 +13,20 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'io.spring.dependency-management'
 
-compileJava.options.encoding = 'UTF-8'
-sourceCompatibility = 17
 
 dependencies {
-    annotationProcessor  group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+    annotationProcessor  group: 'org.projectlombok', name: 'lombok', version: '1.18.42'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.42'
 
     api group: 'dkarlsso', name: 'commons', version: '1.0'
     api group: 'dkarlsso', name: 'commons-raspberry', version: '1.0'
     api group: 'dkarlsso', name: 'commons-persistance', version: '1.0'
     api group: 'dkarlsso', name: 'webportal-connector', version: '1.0'
 
-    implementation 'com.pi4j:pi4j-core:1.2'
-    implementation group: 'com.pi4j', name: 'pi4j-device', version: '1.2'
+    implementation 'com.pi4j:pi4j-core:3.0.3'
     implementation group: 'joda-time', name: 'joda-time', version: '2.10.14'
 
-    implementation  group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+    implementation ("org.springframework.boot:spring-boot-starter-web")
     implementation ("org.springframework.boot:spring-boot-starter-websocket")
 
     //compile group: 'com.google.inject', name: 'guice', version: '4.1.0'
