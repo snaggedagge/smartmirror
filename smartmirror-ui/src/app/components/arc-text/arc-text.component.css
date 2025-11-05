@@ -1,0 +1,17 @@
+.arc-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 40%;
+  height: 0;
+  pointer-events: none;
+}
+
+.arc-text span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 24px;
+  display: inline-block;
+}

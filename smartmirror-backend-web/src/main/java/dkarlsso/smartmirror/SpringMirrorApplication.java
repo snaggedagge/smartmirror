@@ -48,7 +48,7 @@ public class SpringMirrorApplication{
         return new SoundController();
     }
 
-    @Bean
+    //@Bean
     public MediaPlayer mediaPlayer() {
         return new RadioPlayer(ApplicationUtils.getSubfolder("radiochannels"), ApplicationUtils.getSubfolder("vlc"));
     }
@@ -60,7 +60,7 @@ public class SpringMirrorApplication{
 
     @Bean
     public StateService stateService() {
-        return new DefaultStateService(mediaPlayer(), soundController());
+        return new DefaultStateService(null, soundController());
     }
 
     @Bean

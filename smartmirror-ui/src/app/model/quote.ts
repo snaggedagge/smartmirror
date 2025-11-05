@@ -1,5 +1,4 @@
-export class Quote {
-  constructor(public quote: string,
-              public author: string) {
-  }
+export interface Quote {
+  quote: string;
+  author: string;
 }

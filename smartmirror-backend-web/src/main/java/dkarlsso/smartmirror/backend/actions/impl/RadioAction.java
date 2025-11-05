@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@Component
+//@Component
 public class RadioAction implements ActionAwareInvoker {
 
     private final MediaPlayer radioPlayer;

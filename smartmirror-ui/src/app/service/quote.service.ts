@@ -1,18 +1,19 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
-import {WeatherReport} from "../model/weather-report";
 import {Observable} from "rxjs/internal/Observable";
 import {Quote} from "../model/quote";
+import * as quotes from '../../assets/quotes.json';
+import {of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuoteService {
-
-  constructor(private http: HttpClient) { }
-
+  data: Quote[] = quotes;
   public getQuote() : Observable<Quote> {
-    return this.http.get<Quote>(environment.apiBase + "/api/quote");
+    return of(this.data[this.getRandomInt(this.data.length)]);
+  }
+
+  private getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
   }
 }

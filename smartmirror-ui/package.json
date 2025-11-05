@@ -33,7 +33,6 @@
     "@types/sockjs-client": "^1.5.1",
     "bootstrap": "^5.1.3",
     "electron-log": "^4.4.7",
-    "ngx-arc-text": "^1.0.1",
     "rxjs": "~7.5.0",
     "sockjs-client": "^1.6.0",
     "tslib": "^2.3.0",
